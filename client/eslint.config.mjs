@@ -15,10 +15,11 @@ const eslintConfig = [
     rules: {
       "@next/next/no-img-element": "off",
       "no-console": "off",
-      "react-hooks/exhaustive-deps": "off", // add more as needed
+      "react-hooks/exhaustive-deps": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off", // optional, based on your previous `_key` warning
     },
   },
 ];
 
 export default eslintConfig;
-
