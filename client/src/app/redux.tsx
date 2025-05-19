@@ -26,18 +26,17 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
   return {
-    getItem(_key: string): string | null {
-      return null;
+    getItem(_key: any) {
+      return Promise.resolve(null);
     },
-    setItem(_key: string, _value: string): void {
-      // do nothing
+    setItem(_key: any, value: any) {
+      return Promise.resolve(value);
     },
-    removeItem(_key: string): void {
-      // do nothing
+    removeItem(_key: any) {
+      return Promise.resolve();
     },
   };
 };
-
 
 const storage =
   typeof window === "undefined"
@@ -81,12 +80,11 @@ export default function StoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const storeRef = useRef<AppStore | null>(null);
+  const storeRef = useRef<AppStore>();
   if (!storeRef.current) {
     storeRef.current = makeStore();
     setupListeners(storeRef.current.dispatch);
   }
-  
   const persistor = persistStore(storeRef.current);
 
   return (
