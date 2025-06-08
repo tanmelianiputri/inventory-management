@@ -26,17 +26,16 @@ async function main() {
   const dataDirectory = path.join(__dirname, "seedData");
 
   const orderedFileNames = [
-    "expenseByCategory.json",
-    "sales.json",
-    "purchases.json",
-    "expenses.json",
-    "salesSummary.json",
-    "purchaseSummary.json",
-    "expenseSummary.json",
-    "users.json",
     "products.json",
+    "expenseSummary.json",
+    "sales.json",
+    "salesSummary.json",
+    "purchases.json",
+    "purchaseSummary.json",
+    "users.json",
+    "expenses.json",
+    "expenseByCategory.json",
   ];
-  
 
   await deleteAllData(orderedFileNames);
 
@@ -68,4 +67,3 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
-
